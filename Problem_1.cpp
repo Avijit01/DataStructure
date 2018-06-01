@@ -1,41 +1,46 @@
-/* A program to insert an element into a sorted array. */
-
-
-#include<iostream>
-
-using namespace std;
+//Program to insert an element into a sorted  array.
+#include <stdio.h>
 
 int main()
 {
-    int i,j,n,temp,a[30];
-    cout<<"Enter the number of elements:";
-    cin>>n;
-    cout<<"\nEnter the elements\n";
+    int arr[100];
+    int k, i, j, n;
 
-    for(i=0;i<n;i++)
+    //scan element number
+    printf("Enter how many number you want to input: ");
+    scanf("%d", &n);
+
+    //scan ARRAY
+    for(k = 1; k <= n; ++k)
+        scanf("%d", &arr[k]);
+
+    //scan POSITION number
+    printf("\nWhich position you want to insert: ");
+    scanf("%d", &i);
+
+
+    //INSERTATION START
+    j = n;
+    while(j >= i)
     {
-        cin>>a[i];
+        arr[j + 1] = arr[j];
+        j--;
     }
 
-    for(i=1;i<=n-1;i++)
-    {
-        temp=a[i];
-        j=i-1;
+    printf("\nInsert you Data: ");
+    scanf("%d", &arr[i]);
 
-        while((temp<a[j])&&(j>=0))
-        {
-            a[j+1]=a[j];    //moves element forward
-            j=j-1;
-        }
+    n++;
+    //INSERTATION CLOSED
 
-        a[j+1]=temp;    //insert element in proper place
+    //PRINT New Array
+    printf("\nNew Array is: ");
+    k = 1;
+    while(k <= n){
+        printf("%d ", arr[k]);
+        k++;
     }
-
-    cout<<"\nSorted list is as follows\n";
-    for(i=0;i<n;i++)
-    {
-        cout<<a[i]<<" ";
-    }
+    printf("\n");
 
     return 0;
 }
